@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <UserSecretsId>aspnet-OnlineBookStoreDemo-BBB373B5-EF3F-4DBB-B8AA-7152CEC275BF</UserSecretsId>
+	<AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
+    <StartupObject>OnlineBookStoreDemo.Web.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.1" />
+    <PackageReference Include="BuildBundlerMinifier" Version="2.8.391" />
+    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="1.0.172" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.1-beta.61" PrivateAssets="all">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\OnlineBookStoreDemo.Data.Models\OnlineBookStoreDemo.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\OnlineBookStoreDemo.Data\OnlineBookStoreDemo.Data.csproj" />
+    <ProjectReference Include="..\..\Services\OnlineBookStoreDemo.Services.Data\OnlineBookStoreDemo.Services.Data.csproj" />
+    <ProjectReference Include="..\..\Services\OnlineBookStoreDemo.Services.Mapping\OnlineBookStoreDemo.Services.Mapping.csproj" />
+    <ProjectReference Include="..\..\Services\OnlineBookStoreDemo.Services.Messaging\OnlineBookStoreDemo.Services.Messaging.csproj" />
+    <ProjectReference Include="..\..\Services\OnlineBookStoreDemo.Services\OnlineBookStoreDemo.Services.csproj" />
+    <ProjectReference Include="..\OnlineBookStoreDemo.Web.Infrastructure\OnlineBookStoreDemo.Web.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
+      <HintPath>..\..\..\..\..\..\.nuget\packages\microsoft.extensions.configuration.abstractions\2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
