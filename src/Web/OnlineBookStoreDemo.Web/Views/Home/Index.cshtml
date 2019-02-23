@@ -300,11 +300,16 @@
                 </div>
                 <div class="newsletter__block text-center">
                     <p>Subscribe to our newsletters now and stay up-to-date with new collections, the latest lookbooks and exclusive offers.</p>
-                    <form action="#">
+                    <form asp-action="#" >
                         <div class="newsletter__box">
                             <input type="email" placeholder="Enter your e-mail">
-                            <button>Subscribe</button>
+                            <button asp->Subscribe</button>
                         </div>
+                    </form>
+                    <form id="login-form" asp-controller=" " asp-action="" method="post" role="form"
+                          data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-update="#formData">
+                        @Html.AntiForgeryToken()
+                        <input  type="text" name="name" /><input type="submit"/>
                     </form>
                 </div>
             </div>
