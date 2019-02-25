@@ -12,19 +12,41 @@
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
+    public class BookStoreDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         private static readonly MethodInfo SetIsDeletedQueryFilterMethod =
-            typeof(ApplicationDbContext).GetMethod(
+            typeof(BookStoreDbContext).GetMethod(
                 nameof(SetIsDeletedQueryFilter),
                 BindingFlags.NonPublic | BindingFlags.Static);
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public BookStoreDbContext(DbContextOptions<BookStoreDbContext> options)
             : base(options)
         {
         }
 
+        // DB sets
         public DbSet<Setting> Settings { get; set; }
+
+        public DbSet<Author> Authors { get; set; }
+
+        public DbSet<Book> Books { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<Language> Languages { get; set; }
+
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<Publisher> Publishers { get; set; }
+
+        public DbSet<Vote> Votes { get; set; }
+
+        public DbSet<BackCover> BackCovers { get; set; }
+
 
         public override int SaveChanges() => this.SaveChanges(true);
 

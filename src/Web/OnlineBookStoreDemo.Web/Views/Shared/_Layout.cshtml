@@ -379,7 +379,7 @@
             </div>
         </div>
         <!-- End Search Popup -->
-       @this.RenderBody()
+        @this.RenderBody()
         <!-- Footer Area -->
         <footer id="wn__footer" class="footer__area bg__cat--8 brown--color">
             <div class="footer-static-top">
@@ -525,15 +525,17 @@
         <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
         <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
         <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.js" asp-append-version="true"></script>
         <script src="~/js/popper.min.js" asp-append-version="true"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
         <script src="~/js/plugins.js" asp-append-version="true"></script>
         <script src="~/js/active.js" asp-append-version="true"></script>
-        <script src="~/lib/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.js" asp-append-version="true"></script>
-        <script src="~/lib/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.min.js" asp-append-version="true"></script>
     </environment>
     <environment names="Staging,Production">
     </environment>
     @this.RenderSection("Scripts", required: false)
+    @section Scripts  {
+        @await Html.PartialAsync("_ValidationScriptsPartial")
+    }
 </body>
 </html>

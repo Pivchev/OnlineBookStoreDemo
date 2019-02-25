@@ -1,4 +1,6 @@
-﻿namespace Sandbox
+﻿using System.Linq;
+
+namespace Sandbox
 {
     using System;
     using System.Diagnostics;
@@ -34,9 +36,9 @@
             // Seed data on application startup
             using (var serviceScope = serviceProvider.CreateScope())
             {
-                var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                var dbContext = serviceScope.ServiceProvider.GetRequiredService<BookStoreDbContext>();
                 dbContext.Database.Migrate();
-                new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
+                new BookStoreDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
             }
 
             using (var serviceScope = serviceProvider.CreateScope())
@@ -51,10 +53,14 @@
 
         private static int SandboxCode(SandboxOptions options, IServiceProvider serviceProvider)
         {
-            var sw = Stopwatch.StartNew();
-            var settingsService = serviceProvider.GetService<ISettingsService>();
-            Console.WriteLine($"Count of settings: {settingsService.GetCount()}");
-            Console.WriteLine(sw.Elapsed);
+            //var sw = Stopwatch.StartNew();
+            //var settingsService = serviceProvider.GetService<ISettingsService>();
+            //Console.WriteLine($"Count of settings: {settingsService.GetCount()}");
+            //Console.WriteLine(sw.Elapsed);
+
+            var db = serviceProvider.GetService<BookStoreDbContext>();
+            Console.WriteLine(db.Books.Count());
+
             return 0;
         }
 
@@ -66,7 +72,7 @@
                 .Build();
 
             services.AddSingleton<IConfiguration>(configuration);
-            services.AddDbContext<ApplicationDbContext>(
+            services.AddDbContext<BookStoreDbContext>(
                 options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"))
                     .UseLoggerFactory(new LoggerFactory()));
 
@@ -79,7 +85,7 @@
                     options.Password.RequireNonAlphanumeric = false;
                     options.Password.RequiredLength = 6;
                 })
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddEntityFrameworkStores<BookStoreDbContext>()
                 .AddUserStore<ApplicationUserStore>()
                 .AddRoleStore<ApplicationRoleStore>()
                 .AddDefaultTokenProviders();
@@ -92,6 +98,7 @@
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISmsSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
+            services.AddTransient<IServiceProvider, ServiceProvider>();
         }
     }
 }

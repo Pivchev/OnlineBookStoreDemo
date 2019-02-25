@@ -1,0 +1,17 @@
+﻿@model OnlineBookStoreDemo.Web.Areas.Newsletter.ViewModels.SubscriberViewModel
+
+    <form id="subscriber-form"
+          asp-controller="Subscriber"
+          asp-action="Add"
+          data-ajax="true"
+          data-ajax-method="POST"
+          data-ajax-mode="replace">
+
+        <div class="newsletter__box">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+     p       <input asp-for="Email" placeholder="Enter your e-mail" />
+            <button type="submit">Subscribe</button>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+    </form>

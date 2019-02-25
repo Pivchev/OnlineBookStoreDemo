@@ -1,8 +1,7 @@
-﻿using OnlineBookStoreDemo.Data.Models;
-
-namespace OnlineBookStoreDemo.Web.Controllers
+﻿namespace OnlineBookStoreDemo.Web.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+    using OnlineBookStoreDemo.Data.Models;
 
     public class HomeController : BaseController
     {

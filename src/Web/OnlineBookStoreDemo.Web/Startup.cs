@@ -59,7 +59,11 @@
                 .AddDefaultUI(UIFramework.Bootstrap4);
 
             services
-                .AddMvc()
+                .AddMvc(options =>
+                {
+                    options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+
+                })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddRazorPagesOptions(options =>
                 {
@@ -86,6 +90,7 @@
                 });
 
             services.AddSingleton(this.configuration);
+            services.AddAntiforgery();
 
             // Identity stores
             services.AddTransient<IUserStore<ApplicationUser>, ApplicationUserStore>();
@@ -138,8 +143,14 @@
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-                routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "areas",
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+                routes.MapRoute("areaRoute", 
+                    "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute("default", 
+                    "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

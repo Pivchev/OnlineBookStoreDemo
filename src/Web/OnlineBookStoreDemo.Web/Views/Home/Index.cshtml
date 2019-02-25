@@ -2,7 +2,7 @@
 <div class="slider-area brown__nav slider--15 slide__activation slide__arrow01 owl-carousel owl-theme">
     <!-- Start Single Slide -->
     <div class="slide animation__style10 bg-image--1 fullscreen align__center--left">
-        <div class="container" >
+        <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="slider__content">
@@ -300,17 +300,14 @@
                 </div>
                 <div class="newsletter__block text-center">
                     <p>Subscribe to our newsletters now and stay up-to-date with new collections, the latest lookbooks and exclusive offers.</p>
-                    <form asp-action="#" >
-                        <div class="newsletter__box">
-                            <input type="email" placeholder="Enter your e-mail">
-                            <button asp->Subscribe</button>
-                        </div>
-                    </form>
-                    <form id="login-form" asp-controller=" " asp-action="" method="post" role="form"
-                          data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-update="#formData">
-                        @Html.AntiForgeryToken()
-                        <input  type="text" name="name" /><input type="submit"/>
-                    </form>
+                    @*<form asp-action="#" >
+                            <div class="newsletter__box">
+                                <input type="email" placeholder="Enter your e-mail">
+                                <button>Subscribe</button>
+                            </div>
+                        </form>*@
+
+                    @await Html.PartialAsync("../../Areas/Newsletter/Views/Shared/_SubscribePartial")
                 </div>
             </div>
         </div>
