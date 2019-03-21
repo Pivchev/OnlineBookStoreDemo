@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using AngleSharp.Dom;
 
 namespace Sandbox
 {
@@ -23,6 +25,10 @@ namespace Sandbox
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
+    using System.Threading;
+    using System.Text;
+    using System.Net;
+    using AngleSharp.Html.Parser;
 
     public static class Program
     {
@@ -53,16 +59,108 @@ namespace Sandbox
 
         private static int SandboxCode(SandboxOptions options, IServiceProvider serviceProvider)
         {
-            //var sw = Stopwatch.StartNew();
-            //var settingsService = serviceProvider.GetService<ISettingsService>();
-            //Console.WriteLine($"Count of settings: {settingsService.GetCount()}");
-            //Console.WriteLine(sw.Elapsed);
+            Console.OutputEncoding = Encoding.UTF8;
+            var dbContext = serviceProvider.GetService<BookStoreDbContext>();
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            var parser = new HtmlParser();
+            //var webClient = new WebClient { Encoding = Encoding.GetEncoding("utf-8") };
 
-            var db = serviceProvider.GetService<BookStoreDbContext>();
-            Console.WriteLine(db.Books.Count());
+            //Create htmlDocs and webClients
+            var url = "http://www.bookpoint.bg/";
+            List<string> htmlDocs = new List<string>(100);
+            List<WebClient> webClients = new List<WebClient>(100);
+            string urlParams = "";
+
+            for (int level = 0; level < 10; level++)
+            {
+                htmlDocs.Add(new string(""));
+                webClients.Add(new WebClient());
+
+                htmlDocs[level] = webClients[level].DownloadString(url + urlParams);
+                var document = parser.ParseDocument(htmlDocs[level]);
+                var documentLinks = document.Links;
+
+                foreach (var hyperLink in documentLinks)
+                {
+                    if (hyperLink.ClassName != null && hyperLink.ClassName.Contains("level" + level))
+                    {
+                        // Console Write level 1
+                        Console.WriteLine("level" + level + " - " + hyperLink.TextContent);
+                    }
+
+                    urlParams = hyperLink.Attributes[0].Value;
+                }
+                
+            }
 
             return 0;
         }
+
+        //void PrintCategories(string htmlDoc, WebClient webClient, string urlParams, string url)
+        //{
+        //    HtmlParser parser = new HtmlParser();
+        //    for (int level = 0; level < 10; level++)
+        //    {
+        //        htmlDoc = webClient.DownloadString(url + urlParams);
+        //        var document = parser.ParseDocument(htmlDocs[level]);
+        //        var documentLinks = document.Links;
+
+        //        foreach (var hyperLink in documentLinks)
+        //        {
+        //            if (hyperLink.ClassName != null && hyperLink.ClassName.Contains("level" + level))
+        //            {
+        //                // Console Write level 1
+        //                Console.WriteLine("level" + level + " - " + hyperLink.TextContent);
+        //            }
+
+        //            urlParams = hyperLink.Attributes[0].Value;
+        //        }
+
+        //    }
+        //}
+
+
+
+        //for (var i = 1; i < 210; i++)
+        //{
+        //    var url = "http://www.bookpoint.bg/?cid=3&cat=" + i;
+        //    string html = null;
+        //    for (int j = 0; j < 10; j++)
+        //    {
+        //        try
+        //        {
+        //            html = webClient.DownloadString(url);
+        //            break;
+        //        }
+        //        catch (Exception)
+        //        {
+        //            Thread.Sleep(10000);
+        //        }
+        //    }
+
+        //    if (string.IsNullOrWhiteSpace(html))
+        //    {
+        //        continue;
+        //    }
+
+        //    var document = parser.ParseDocument(html);
+
+        //var categoryName = document.QuerySelector("h1")?.TextContent?.Trim(); // Get all categories
+
+        //if (!string.IsNullOrWhiteSpace(categoryName))
+        //{
+        //    var category = new Category
+        //    {
+        //        Name = categoryName,
+        //    };
+
+        //    dbContext.Categories.Add(category);
+        //    dbContext.SaveChanges();
+        //}
+
+
+        //Console.WriteLine($"{i} => {categoryName}");
+        //}
 
         private static void ConfigureServices(ServiceCollection services)
         {

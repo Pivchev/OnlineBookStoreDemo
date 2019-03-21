@@ -1,4 +1,7 @@
-﻿namespace OnlineBookStoreDemo.Web.Controllers
+﻿using System.Linq;
+using OnlineBookStoreDemo.Data.Common.Repositories;
+
+namespace OnlineBookStoreDemo.Web.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
     using OnlineBookStoreDemo.Data.Models;
@@ -6,12 +9,6 @@
     public class HomeController : BaseController
     {
         public IActionResult Index()
-        {
-            return this.View();
-        }
-
-        [HttpPost]
-        public IActionResult Index(Subscriber subscriber)
         {
             return this.View();
         }

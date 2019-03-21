@@ -210,11 +210,13 @@ namespace OnlineBookStoreDemo.Data.Migrations
 
                     b.Property<DateTime?>("DeletedOn");
 
-                    b.Property<string>("FirstName");
+                    b.Property<string>("FirstName")
+                        .IsRequired();
 
                     b.Property<bool>("IsDeleted");
 
-                    b.Property<string>("LastName");
+                    b.Property<string>("LastName")
+                        .IsRequired();
 
                     b.Property<DateTime?>("ModifiedOn");
 
@@ -239,7 +241,8 @@ namespace OnlineBookStoreDemo.Data.Migrations
 
                     b.Property<DateTime?>("ModifiedOn");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -258,8 +261,6 @@ namespace OnlineBookStoreDemo.Data.Migrations
 
                     b.Property<int>("BackCoverId");
 
-                    b.Property<int>("Barcode");
-
                     b.Property<int>("CategoryId");
 
                     b.Property<DateTime>("CreatedOn");
@@ -268,7 +269,7 @@ namespace OnlineBookStoreDemo.Data.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<int>("ISBN");
+                    b.Property<string>("ISBN");
 
                     b.Property<bool>("InStock");
 
@@ -288,11 +289,12 @@ namespace OnlineBookStoreDemo.Data.Migrations
 
                     b.Property<string>("Size");
 
-                    b.Property<string>("Title");
+                    b.Property<string>("Title")
+                        .IsRequired();
 
                     b.Property<string>("TranslatorName");
 
-                    b.Property<double>("Weight");
+                    b.Property<int>("Weight");
 
                     b.Property<DateTime>("Year");
 
@@ -327,7 +329,8 @@ namespace OnlineBookStoreDemo.Data.Migrations
 
                     b.Property<DateTime?>("ModifiedOn");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.Property<int?>("ParentId");
 
@@ -348,7 +351,8 @@ namespace OnlineBookStoreDemo.Data.Migrations
 
                     b.Property<int>("BookId");
 
-                    b.Property<string>("Content");
+                    b.Property<string>("Content")
+                        .IsRequired();
 
                     b.Property<DateTime>("CreatedOn");
 
@@ -358,9 +362,7 @@ namespace OnlineBookStoreDemo.Data.Migrations
 
                     b.Property<DateTime?>("ModifiedOn");
 
-                    b.Property<int>("UserId");
-
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
                         .IsRequired();
 
                     b.HasKey("Id");
@@ -369,7 +371,7 @@ namespace OnlineBookStoreDemo.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Comments");
                 });
@@ -388,7 +390,8 @@ namespace OnlineBookStoreDemo.Data.Migrations
 
                     b.Property<DateTime?>("ModifiedOn");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -403,35 +406,44 @@ namespace OnlineBookStoreDemo.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address");
+                    b.Property<string>("Address")
+                        .IsRequired();
 
-                    b.Property<string>("City");
+                    b.Property<string>("City")
+                        .IsRequired();
 
-                    b.Property<string>("Country");
+                    b.Property<string>("Country")
+                        .IsRequired();
 
                     b.Property<DateTime>("CreatedOn");
 
                     b.Property<DateTime?>("DeletedOn");
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .IsRequired();
 
-                    b.Property<string>("FirstName");
+                    b.Property<string>("FirstName")
+                        .IsRequired();
 
                     b.Property<bool>("IsDeleted");
 
-                    b.Property<string>("LastName");
+                    b.Property<string>("LastName")
+                        .IsRequired();
 
                     b.Property<DateTime?>("ModifiedOn");
 
                     b.Property<DateTime>("OrderDate");
 
-                    b.Property<string>("Phone");
+                    b.Property<string>("Phone")
+                        .IsRequired();
 
-                    b.Property<string>("PostalCode");
+                    b.Property<string>("PostalCode")
+                        .IsRequired();
 
                     b.Property<decimal>("Total");
 
-                    b.Property<string>("Username");
+                    b.Property<string>("UserId")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -487,9 +499,8 @@ namespace OnlineBookStoreDemo.Data.Migrations
 
                     b.Property<DateTime?>("ModifiedOn");
 
-                    b.Property<string>("Name");
-
-                    b.Property<int>("PublisherID");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -521,6 +532,30 @@ namespace OnlineBookStoreDemo.Data.Migrations
                     b.HasIndex("IsDeleted");
 
                     b.ToTable("Settings");
+                });
+
+            modelBuilder.Entity("OnlineBookStoreDemo.Data.Models.Subscriber", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn");
+
+                    b.Property<DateTime?>("DeletedOn");
+
+                    b.Property<string>("Email")
+                        .IsRequired();
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("ModifiedOn");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("Subscribers");
                 });
 
             modelBuilder.Entity("OnlineBookStoreDemo.Data.Models.Vote", b =>
@@ -644,7 +679,7 @@ namespace OnlineBookStoreDemo.Data.Migrations
 
                     b.HasOne("OnlineBookStoreDemo.Data.Models.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId1")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

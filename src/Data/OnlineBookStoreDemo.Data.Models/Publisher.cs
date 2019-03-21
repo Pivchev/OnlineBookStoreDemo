@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using OnlineBookStoreDemo.Data.Common.Models;
 
     public class Publisher : BaseDeletableModel<int>
@@ -11,8 +12,7 @@
             this.Books = new HashSet<Book>();
         }
 
-        public int PublisherID { get; set; }
-
+        [Required]
         public string Name { get; set; }
 
         public virtual ICollection<Book> Books { get; set; }

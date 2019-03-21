@@ -1,4 +1,6 @@
-﻿<!-- Start Slider area -->
+﻿@using OnlineBookStoreDemo.Data.Models
+
+<!-- Start Slider area -->
 <div class="slider-area brown__nav slider--15 slide__activation slide__arrow01 owl-carousel owl-theme">
     <!-- Start Single Slide -->
     <div class="slide animation__style10 bg-image--1 fullscreen align__center--left">
@@ -298,16 +300,9 @@
                 <div class="section__title text-center">
                     <h2>Stay With Us</h2>
                 </div>
-                <div class="newsletter__block text-center">
+                <div class="newsletter__block text-center">p
                     <p>Subscribe to our newsletters now and stay up-to-date with new collections, the latest lookbooks and exclusive offers.</p>
-                    @*<form asp-action="#" >
-                            <div class="newsletter__box">
-                                <input type="email" placeholder="Enter your e-mail">
-                                <button>Subscribe</button>
-                            </div>
-                        </form>*@
-
-                    @await Html.PartialAsync("../../Areas/Newsletter/Views/Shared/_SubscribePartial")
+                    @await Html.PartialAsync("../../Areas/Newsletter/Views/Shared/_SubscribePartial", new Subscriber())
                 </div>
             </div>
         </div>

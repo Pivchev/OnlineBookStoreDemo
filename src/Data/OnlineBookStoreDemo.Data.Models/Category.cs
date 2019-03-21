@@ -1,7 +1,7 @@
 ﻿namespace OnlineBookStoreDemo.Data.Models
 {
     using System.Collections.Generic;
-
+    using System.ComponentModel.DataAnnotations;
     using OnlineBookStoreDemo.Data.Common.Models;
 
     public class Category : BaseDeletableModel<int>
@@ -12,6 +12,7 @@
             this.Childrens = new List<Category>();
         }
 
+        [Required]
         public string Name { get; set; }
 
         public int? ParentId { get; set; }

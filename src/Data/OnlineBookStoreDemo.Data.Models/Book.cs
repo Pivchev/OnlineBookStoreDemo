@@ -1,4 +1,6 @@
-﻿namespace OnlineBookStoreDemo.Data.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace OnlineBookStoreDemo.Data.Models
 {
     using System;
     using System.Collections.Generic;
@@ -13,6 +15,7 @@
             this.Votes = new HashSet<Vote>();
         }
 
+        [Required]
         public string Title { get; set; }
 
         public int AuthorId { get; set; }
@@ -21,15 +24,13 @@
 
         public int CategoryId { get; set; }
 
-        public int ISBN { get; set; }
-
-        public int Barcode { get; set; }
+        public string ISBN { get; set; }
 
         public int LanguageId { get; set; }
 
         public string TranslatorName { get; set; }
 
-        public double Weight { get; set; }
+        public int Weight { get; set; }
 
         public int BackCoverId { get; set; }
 

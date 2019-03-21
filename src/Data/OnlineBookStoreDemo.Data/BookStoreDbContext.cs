@@ -47,6 +47,7 @@
 
         public DbSet<BackCover> BackCovers { get; set; }
 
+        public DbSet<Subscriber> Subscribers { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
