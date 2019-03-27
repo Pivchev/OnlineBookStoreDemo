@@ -21,6 +21,7 @@ namespace OnlineBookStoreDemo.Web.Areas.Newsletter.Controllers
         {
             if (this.ModelState.IsValid)
             {
+                // TODO: Check of already exists
                 this.subscribers.AddAsync(subscriber);
                 this.subscribers.SaveChangesAsync();
                 return this.Json("OK!");

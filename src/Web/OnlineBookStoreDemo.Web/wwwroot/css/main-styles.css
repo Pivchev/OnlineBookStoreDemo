@@ -801,28 +801,28 @@ a {
 }
 
 .bg-image--3 {
-    background-image: url(~/images/bg/3.jpg);
+    background-image: url(../images/bg/3.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
 }
 
 .bg-image--4 {
-    background-image: url(~/images/bg/4.jpg);
+    background-image: url(../images/bg/4.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
 }
 
 .bg-image--5 {
-    background-image: url(~/images/bg/5.jpg);
+    background-image: url(../images/bg/5.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
 }
 
 .bg-image--6 {
-    background-image: url(~/images/bg/6.jpg);
+    background-image: url(../images/bg/6.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -8703,7 +8703,7 @@ a.checkout__title {
 /*  Home Box Css */
 .wrapper-boxed-layout {
     margin: 0 auto;
-    width: calc(100% - 1000px);
+    width: 60%;
     -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     -ms-box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);

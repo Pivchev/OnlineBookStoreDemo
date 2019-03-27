@@ -1,23 +1,36 @@
 ﻿@model OnlineBookStoreDemo.Data.Models.Subscriber
 
-<form id="subscriber-form"
-      asp-controller="Subscriber"
-      asp-action="Add"
-      data-ajax="true"
-      data-ajax-method="POST"
-      data-ajax-mode="replace"
-      data-ajax-complete="completed">
+    <section class="wn__newsletter__area bg-image--2">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 offset-lg-5 col-md-12 col-12 ptb--150">
+                    <div class="section__title text-center">
+                        <h2></h2>
+                    </div>
+                    <div class="newsletter__block text-center">
+                        <p>Subscribe to our newsletters now and stay up-to-date with new collections, the latest lookbooks and exclusive offers.</p>
+                        <form id="subscriber-form"
+                              asp-controller="Subscriber"
+                              asp-action="Add"
+                              data-ajax="true"
+                              data-ajax-method="POST"
+                              data-ajax-mode="replace"
+                              data-ajax-complete="completed">
 
-    <div class="newsletter__box">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <input asp-for="Email" placeholder="Enter your e-mail" />
-        <button type="submit">Subscribe</button>
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
-</form>
-
+                            <div class="newsletter__box">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input asp-for="Email" placeholder="Enter your e-mail" />
+                                <button type="submit">Subscribe</button>
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <script>
         completed = function (xhr) {
-            alert(`Hi ${xhr.responseText}!`);
+            alert(`Thanks for subscribing! Controller Message ${xhr.responseText}!`);
         };
     </script>
