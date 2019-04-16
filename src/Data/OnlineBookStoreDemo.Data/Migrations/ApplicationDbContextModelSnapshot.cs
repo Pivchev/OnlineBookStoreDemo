@@ -332,13 +332,13 @@ namespace OnlineBookStoreDemo.Data.Migrations
                     b.Property<string>("Name")
                         .IsRequired();
 
-                    b.Property<int?>("ParentId");
+                    b.Property<int?>("ParentCategoryId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
 
-                    b.HasIndex("ParentId");
+                    b.HasIndex("ParentCategoryId");
 
                     b.ToTable("Categories");
                 });
@@ -665,9 +665,9 @@ namespace OnlineBookStoreDemo.Data.Migrations
 
             modelBuilder.Entity("OnlineBookStoreDemo.Data.Models.Category", b =>
                 {
-                    b.HasOne("OnlineBookStoreDemo.Data.Models.Category", "Parent")
-                        .WithMany("Childrens")
-                        .HasForeignKey("ParentId");
+                    b.HasOne("OnlineBookStoreDemo.Data.Models.Category", "ParentCategory")
+                        .WithMany("SubCategories")
+                        .HasForeignKey("ParentCategoryId");
                 });
 
             modelBuilder.Entity("OnlineBookStoreDemo.Data.Models.Comment", b =>

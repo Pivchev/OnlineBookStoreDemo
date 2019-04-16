@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using OnlineBookStoreDemo.Data.Models;
-
-namespace OnlineBookStoreDemo.Web.ViewModels
+﻿namespace OnlineBookStoreDemo.Services.Models.Home
 {
+    using OnlineBookStoreDemo.Data.Models;
+    using System.Collections.Generic;
+
     public class SpecialOfferViewModel
     {
         public string Id { get; set; }

@@ -1,6 +1,4 @@
-﻿using OnlineBookStoreDemo.Web.ViewModels;
-
-namespace OnlineBookStoreDemo.Web.Components
+﻿namespace OnlineBookStoreDemo.Web.Components
 {
     using System;
     using System.Collections.Generic;
@@ -10,6 +8,7 @@ namespace OnlineBookStoreDemo.Web.Components
     using Microsoft.AspNetCore.Mvc;
     using OnlineBookStoreDemo.Data.Common.Repositories;
     using OnlineBookStoreDemo.Data.Models;
+    using OnlineBookStoreDemo.Services.Models.Home;
 
     public class SpecialOffersViewComponent : ViewComponent
     {

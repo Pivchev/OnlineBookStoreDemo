@@ -95,6 +95,11 @@
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
+
+            builder.Entity<Category>()
+                .HasMany(category => category.SubCategories)
+                .WithOne(e => e.ParentCategory)
+                .HasForeignKey(category => category.ParentCategoryId);
         }
 
         private static void ConfigureUserIdentityRelations(ModelBuilder builder)

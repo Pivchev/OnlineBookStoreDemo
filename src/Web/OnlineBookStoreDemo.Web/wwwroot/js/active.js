@@ -411,7 +411,7 @@
     $('#cms_play').on('click', function(){
         $(this).hide('fast');
         $(".img_static").fadeOut('fast');
-        $('.static_video').append('<iframe class="added_video" width="'+video_frame_w+'px" height="'+video_frame_h+'px" src="https://www.youtube.com/embed/0fYMLQjK-MI?rel=0&autoplay=1" frameborder="0"></iframe>');
+        $('.static_video').append('<iframe class="added_video" width="'+video_frame_w+'px" height="'+video_frame_h+'px" src="https://www.youtube.com/" frameborder="0"></iframe>');
     });
 
 /*=============  Gallery Mesonry Activation  ==============*/

@@ -1,8 +1,101 @@
-/*********************************************************************************
+.bg--light-gray {
+    background-color: #f0f0f0;
+}
 
-	Template Name: Boighor Bookshop Responsive Bootstrap4 Template  
-	Description: Template description
-	Version: 1.0
-	Note: This is custom css. All custom styles (user styles) declare here.
+.shop-list-title {
+    padding: 10px 0;
+    width: 100%;
+}
 
-**********************************************************************************/
+.sidebar-section {
+    padding: .5rem 1rem;
+    margin: .5rem;
+    background: #fff;
+    box-shadow: 0.1rem 0.1rem 0.2rem rgba(0,0,0,0.1);
+    margin-left: 0;
+}
+
+.sidebar-right-section {
+    padding: .3rem 0.5rem;
+    background: #fff;
+    box-shadow: 0.1rem 0.1rem 0.2rem rgba(0,0,0,0.1);
+    margin-left: 0;
+}
+
+.block-header-banner {
+    margin: 0;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 1rem;
+    text-size-adjust: 100%;
+    text-align:center;
+}
+
+.active-category {
+}
+
+.current-page {
+    font-weight: bold;
+    /*padding: .5rem;*/
+    display: block;
+    border-bottom: 0.2rem solid #e59285;
+}
+
+.sub-category-1 {
+    margin-left: 1em;
+}
+
+.sub-category-2 {
+    margin-left: 1.5em;
+}
+
+.sub-category-3 {
+    margin-left: 2em;
+}
+
+.categories-title {
+    padding-top: 10px;
+}
+
+.books-section {
+    margin-left: 0.5em;
+}
+
+.categories-title::before {
+    content: "<";
+    margin-right: 0.8rem;
+    font-size: 2.2em;
+    line-height: 0;
+    position: relative;
+    top: 0.22em;
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+}
+
+.filter-input-group {
+    margin: 0 0 20px;
+}
+
+.filter-input-title {
+    color: #333;
+    line-height: 2;
+    font-size: 14px;
+    display: block;
+}
+
+.filter-input-text {
+    height: 40px;
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #e1e1e1;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.filter-input-options {
+    border: 1px solid #e1e1e1;
+    height: 40px;
+    padding: 0 43px 0 10px;
+    width: 100%;
+}
+

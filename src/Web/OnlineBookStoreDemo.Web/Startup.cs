@@ -25,6 +25,8 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
     using System;
+    using OnlineBookStoreDemo.Web.Infrastructure;
+    using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
     public class Startup
     {
@@ -62,7 +64,8 @@
                 .AddMvc(options =>
                 {
                     options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
-
+                    options.Conventions.Add(new RouteTokenTransformerConvention(
+                                 new SlugifyParameterTransformer()));
                 })
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddRazorPagesOptions(options =>
@@ -71,6 +74,14 @@
                     options.Conventions.AuthorizeAreaFolder("Identity", "/Account/Manage");
                     options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
                 });
+
+            // Routing
+            services.AddRouting(options =>
+            {
+                // Replace the type and the name used to refer to it with your own
+                // IOutboundParameterTransformer implementation
+                options.ConstraintMap["slugify"] = typeof(SlugifyParameterTransformer);
+            });
 
             services
                 .ConfigureApplicationCookie(options =>
@@ -92,6 +103,8 @@
             services.AddSingleton(this.configuration);
             services.AddAntiforgery();
 
+            
+
             // Identity stores
             services.AddTransient<IUserStore<ApplicationUser>, ApplicationUserStore>();
             services.AddTransient<IRoleStore<ApplicationRole>, ApplicationRoleStore>();
@@ -100,6 +113,7 @@
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
+            services.AddScoped<ICategoriesService, CategoriesService>();
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
@@ -144,13 +158,18 @@
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "areas",
-                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-                );
-                routes.MapRoute("areaRoute", 
-                    "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-                routes.MapRoute("default", 
-                    "{controller=Home}/{action=Index}/{id?}");
+                    name: "Catalog",
+                    template: "books/",
+                    defaults: new { controller = "Catalog", action = "AllCategories" });
+
+                routes.MapRoute(
+                    name: "Category",
+                    template: "books/{categoryId?}/{categoryName:slugify}",
+                    defaults: new { controller = "Catalog", action = "SubCategories" });
+
+                routes.MapRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+                routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

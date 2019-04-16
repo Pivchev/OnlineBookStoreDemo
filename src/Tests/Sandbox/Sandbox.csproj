@@ -41,6 +41,7 @@
     <ProjectReference Include="..\..\Services\OnlineBookStoreDemo.Services.Mapping\OnlineBookStoreDemo.Services.Mapping.csproj" />
     <ProjectReference Include="..\..\Services\OnlineBookStoreDemo.Services.Messaging\OnlineBookStoreDemo.Services.Messaging.csproj" />
     <ProjectReference Include="..\..\Services\OnlineBookStoreDemo.Services\OnlineBookStoreDemo.Services.csproj" />
+    <ProjectReference Include="..\..\Web\OnlineBookStoreDemo.Web\OnlineBookStoreDemo.Web.csproj" />
   </ItemGroup>
 
 </Project>

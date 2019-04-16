@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\OnlineBookStoreDemo.Data.Common\OnlineBookStoreDemo.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\OnlineBookStoreDemo.Data.Models\OnlineBookStoreDemo.Data.Models.csproj" />
+    <ProjectReference Include="..\OnlineBooksStoreDemo.Services.Models\OnlineBookStoreDemo.Services.Models.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,10 +1,6 @@
-﻿using System.Linq;
-using OnlineBookStoreDemo.Data.Common.Repositories;
-
-namespace OnlineBookStoreDemo.Web.Controllers
+﻿namespace OnlineBookStoreDemo.Web.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
-    using OnlineBookStoreDemo.Data.Models;
 
     public class HomeController : BaseController
     {

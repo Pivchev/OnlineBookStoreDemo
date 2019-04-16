@@ -37,6 +37,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\OnlineBookStoreDemo.Data.Models\OnlineBookStoreDemo.Data.Models.csproj" />
     <ProjectReference Include="..\..\Data\OnlineBookStoreDemo.Data\OnlineBookStoreDemo.Data.csproj" />
+    <ProjectReference Include="..\..\Services\OnlineBooksStoreDemo.Services.Models\OnlineBookStoreDemo.Services.Models.csproj" />
     <ProjectReference Include="..\..\Services\OnlineBookStoreDemo.Services.Data\OnlineBookStoreDemo.Services.Data.csproj" />
     <ProjectReference Include="..\..\Services\OnlineBookStoreDemo.Services.Mapping\OnlineBookStoreDemo.Services.Mapping.csproj" />
     <ProjectReference Include="..\..\Services\OnlineBookStoreDemo.Services.Messaging\OnlineBookStoreDemo.Services.Messaging.csproj" />

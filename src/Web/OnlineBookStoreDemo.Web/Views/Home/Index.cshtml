@@ -1,23 +1,21 @@
 ﻿<!-- Start Slider area -->
-@await Html.PartialAsync("_SliderPartial")
+<partial name="~/Views/Home/Partial/_SliderPartial.cshtml" />
 <!-- End Slider area -->
-
 <!-- Start BEst Seller Area -->
-@await Component.InvokeAsync("NewReleases")
+<vc:new-releases>
+</vc:new-releases>
 <!-- End BEst Seller Area -->
-
 <!-- Start NEwsletter Area -->
-@await Html.PartialAsync("../../Areas/Newsletter/Views/Shared/_SubscribePartial")
+<partial name="~/Areas/Newsletter/Views/Shared/_SubscribePartial.cshtml" />
 <!-- End NEwsletter Area -->
-
 <!-- Start Top Categories Area -->
-@await Component.InvokeAsync("SpecialOffers")
+<vc:special-offers>
+</vc:special-offers>
 <!-- End Top Categories Area -->
-
 <!-- Start Recent Post Area -->
-@await Html.PartialAsync("_RecentPostPartial")
+<partial name="~/Views/Home/Partial/_RecentPostPartial.cshtml" />
 <!-- End Recent Post Area -->
-
 <!-- Start Best Sale Area -->
-@await Component.InvokeAsync("BestSellers")
+<vc:best-sellers>
+</vc:best-sellers>
 <!-- End Best Sale Area Area -->

@@ -54,14 +54,14 @@ namespace OnlineBookStoreDemo.Data.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(nullable: true),
-                    ParentId = table.Column<int>(nullable: true)
+                    ParentCategoryId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Categories", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Categories_Categories_ParentId",
-                        column: x => x.ParentId,
+                        column: x => x.ParentCategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -333,9 +333,9 @@ namespace OnlineBookStoreDemo.Data.Migrations
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Categories_ParentId",
+                name: "IX_Categories_ParentCategoryId",
                 table: "Categories",
-                column: "ParentId");
+                column: "ParentCategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_BookId",
