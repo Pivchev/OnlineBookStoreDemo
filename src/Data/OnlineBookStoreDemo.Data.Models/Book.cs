@@ -24,6 +24,7 @@ namespace OnlineBookStoreDemo.Data.Models
 
         public int CategoryId { get; set; }
 
+        [Required]
         public string ISBN { get; set; }
 
         public int LanguageId { get; set; }
@@ -37,6 +38,9 @@ namespace OnlineBookStoreDemo.Data.Models
         public decimal Price { get; set; }
 
         public string Size { get; set; }
+
+        [Range(0, 90, ErrorMessage = "The promotion precentige must be between 0% and 90%")]
+        public int PromotionPercentage { get; set; }
 
         public bool InStock { get; set; }
 

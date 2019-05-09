@@ -1,4 +1,4 @@
-﻿namespace OnlineBookStoreDemo.Services.Models.Catalog
+﻿namespace OnlineBookStoreDemo.Services.Models.Books
 {
     using System;
 

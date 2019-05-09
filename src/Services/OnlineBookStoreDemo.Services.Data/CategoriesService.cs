@@ -7,7 +7,7 @@
     using Microsoft.EntityFrameworkCore;
     using OnlineBookStoreDemo.Data.Common.Repositories;
     using OnlineBookStoreDemo.Data.Models;
-    using OnlineBookStoreDemo.Services.Models.Catalog;
+    using OnlineBookStoreDemo.Services.Models.Categories;
 
     public class CategoriesService : ICategoriesService
     {

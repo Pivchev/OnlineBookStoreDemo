@@ -114,6 +114,7 @@
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
             services.AddScoped<ICategoriesService, CategoriesService>();
+            services.AddScoped<IBooksService, BooksService>();
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();

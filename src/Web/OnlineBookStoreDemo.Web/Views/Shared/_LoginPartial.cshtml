@@ -1,0 +1,47 @@
+﻿@using OnlineBookStoreDemo.Common
+@using OnlineBookStoreDemo.Data.Models
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<a class="setting__active" href="#"></a>
+<div class="searchbar__content setting__block">
+    <div class="content-inner">
+        <div class="switcher-currency">
+            @if (this.SignInManager.IsSignedIn(this.User))
+            {
+            <strong class="label switcher-label">
+                <span>@(this.User.Identity.Name)</span>
+            </strong>
+            <div class="switcher-options">
+                <div class="switcher-currency-trigger">
+                    <div class="setting__menu">
+                        <span><a href="~/#">My Account</a></span>
+                        <span><a href="~/#">My Wishlist</a></span>
+                        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@(this.Url.Action("Index", "Home", new { area = string.Empty }))">
+                            <button type="submit" class="nav-link btn btn-link text-dark">
+                                <span>Logout</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            }
+            else
+            {
+            <strong class="label switcher-label">
+                <span>My Account</span>
+            </strong>
+            <div class="switcher-options">
+                <div class="switcher-currency-trigger">
+                    <div class="setting__menu">
+                        <span><a asp-area="Identity" asp-page="/Account/Login">Sign In</a></span>
+                        <span><a asp-area="Identity" asp-page="/Account/Register">Create An Account</a></span>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>
+

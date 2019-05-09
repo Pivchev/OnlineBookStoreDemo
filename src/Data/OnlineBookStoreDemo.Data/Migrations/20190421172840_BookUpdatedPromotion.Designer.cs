@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnlineBookStoreDemo.Data;
 
 namespace OnlineBookStoreDemo.Data.Migrations
 {
     [DbContext(typeof(BookStoreDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190421172840_BookUpdatedPromotion")]
+    partial class BookUpdatedPromotion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -286,7 +288,7 @@ namespace OnlineBookStoreDemo.Data.Migrations
 
                     b.Property<decimal>("Price");
 
-                    b.Property<int>("PromotionPercentage");
+                    b.Property<float>("PromotionPercentige");
 
                     b.Property<int>("PublisherId");
 
@@ -577,7 +579,10 @@ namespace OnlineBookStoreDemo.Data.Migrations
 
                     b.Property<DateTime?>("ModifiedOn");
 
-                    b.Property<string>("UserId");
+                    b.Property<int>("UserId");
+
+                    b.Property<string>("UserId1")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -585,7 +590,7 @@ namespace OnlineBookStoreDemo.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId1");
 
                     b.ToTable("Votes");
                 });
@@ -705,7 +710,8 @@ namespace OnlineBookStoreDemo.Data.Migrations
 
                     b.HasOne("OnlineBookStoreDemo.Data.Models.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId1")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }

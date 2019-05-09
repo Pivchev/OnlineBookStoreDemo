@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    using OnlineBookStoreDemo.Services.Models.Catalog;
+    using OnlineBookStoreDemo.Services.Models.Categories;
 
     public interface ICategoriesService
     {

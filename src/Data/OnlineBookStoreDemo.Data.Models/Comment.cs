@@ -1,7 +1,8 @@
 ﻿namespace OnlineBookStoreDemo.Data.Models
 {
-    using OnlineBookStoreDemo.Data.Common.Models;
     using System.ComponentModel.DataAnnotations;
+
+    using OnlineBookStoreDemo.Data.Common.Models;
 
     public class Comment : BaseDeletableModel<int>
     {
